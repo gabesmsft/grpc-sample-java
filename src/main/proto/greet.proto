@@ -2,7 +2,7 @@ syntax = "proto3";
 
 option go_package = "github.com/jeffhollan/grpc-sample-go/protos";
 option java_multiple_files = true;
-option java_package = "io.hollan.grpc_backend";
+option java_package = "io.hollan.proto";
 
 
 package greet;

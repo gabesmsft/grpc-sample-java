@@ -8,6 +8,7 @@ import io.grpc.stub.StreamObserver;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
+import io.hollan.proto.*;
 
 /**
  * Server that manages startup/shutdown of a {@code Greeter} server.
