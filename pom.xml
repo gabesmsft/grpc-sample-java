@@ -7,6 +7,7 @@
   <groupId>io.hollan</groupId>
   <artifactId>grpc-sample</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
 
   <name>grpc-sample</name>
   <!-- FIXME change it to the project's website -->
@@ -90,6 +91,14 @@
       <version>2.6.0</version>
 			<scope>test</scope>
 		</dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.6.0</version>
+        <type>pom</type>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -167,11 +176,19 @@
               <descriptorRef>jar-with-dependencies</descriptorRef>
             </descriptorRefs>
             <appendAssemblyId>false</appendAssemblyId>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                  <resource>META-INF/spring.handlers</resource>
+                </transformer>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                  <resource>META-INF/spring.schemas</resource>
+                </transformer>
+              </transformers>
           </configuration>
           <executions>
             <execution>
-              <id>make-assembly</id> <!-- this is used for inheritance merges -->
-              <phase>package</phase> <!-- bind to the packaging phase -->
+              <id>make-assembly</id> 
+              <phase>package</phase> 
               <goals>
                 <goal>single</goal>
               </goals>
@@ -181,6 +198,26 @@
         <plugin>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-maven-plugin</artifactId>
+          <version>2.6.0</version>
+          <configuration>
+              <fork>true</fork>
+              <mainClass>io.hollan.https_frontend.Application</mainClass>
+                <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                  <resource>META-INF/spring.handlers</resource>
+                </transformer>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                  <resource>META-INF/spring.schemas</resource>
+                </transformer>
+              </transformers>
+          </configuration>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>repackage</goal>
+                </goals>
+              </execution>
+          </executions>
         </plugin>
       </plugins>
   </build>

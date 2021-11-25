@@ -1,3 +1,3 @@
 FROM openjdk:17-bullseye
-COPY target/app.jar .
-ENTRYPOINT ["java","-cp","app.jar","io.hollan.https_frontend.Application"]
+COPY target/grpc-sample-1.0-SNAPSHOT.jar .
+ENTRYPOINT ["java","-jar","grpc-sample-1.0-SNAPSHOT.jar"]
