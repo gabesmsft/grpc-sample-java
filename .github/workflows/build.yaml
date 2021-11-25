@@ -5,9 +5,9 @@ on:
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
     paths:
-      - grpc-backend/**
-      - https-frontend/**
-      - protos/**
+      - src/**
+      - Dockerfile-grpc-backend
+      - Dockerfile-https-frontend
       - .github/workflows/build.yaml
   workflow_dispatch:
 
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        services: [ {'imageName': 'grpc-backend', 'directory': './grpc-backend'}, {'imageName': 'https-frontend', 'directory': './https-frontend'}]
+        services: [ {'imageName': 'grpc-backend', 'dockerfile': 'Dockerfile-grpc-backend'}, {'imageName': 'https-frontend', 'dockerfile': 'Dockerfile-https-frontend'}]
     permissions:
       contents: read
       packages: write
