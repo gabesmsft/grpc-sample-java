@@ -39,7 +39,7 @@ az containerapp create \
   --name grpc-backend \
   --resource-group $RESOURCE_GROUP \
   --environment $ACA_ENVIRONMENT \
-  --image ghcr.io/jeffhollan/grpc-sample-node/grpc-backend:main \
+  --image ghcr.io/jeffhollan/grpc-sample-java/grpc-backend:main \
   --ingress 'internal' \
   --target-port 50051 \
   --transport 'http2'
@@ -54,9 +54,9 @@ az containerapp create \
   --name https-frontend \
   --resource-group $RESOURCE_GROUP \
   --environment $ACA_ENVIRONMENT \
-  --image ghcr.io/jeffhollan/grpc-sample-node/https-frontend:main \
+  --image ghcr.io/jeffhollan/grpc-sample-java/https-frontend:main \
   --environment-variables GRPC_SERVER_ADDRESS=$GRPC_SERVER_ADDRESS':443' \
-  --target-port 8050 \
+  --target-port 8080 \
   --ingress 'external' \
   --query configuration.ingress.fqdn
 ```
