@@ -1,0 +1,3 @@
+FROM openjdk:17-bullseye
+COPY target/app.jar .
+ENTRYPOINT ["java","-cp","app.jar","io.hollan.grpc_backend.GrpcServer"]
