@@ -1,6 +1,6 @@
 # gRPC Sample : Java
 
-### Sample language options
+### View this sample in other languages
 | [C#](https://github.com/jeffhollan/grpc-sample-dotnet) | [Go](https://github.com/jeffhollan/grpc-sample-go) | [Java](https://github.com/jeffhollan/grpc-sample-java) | [JavaScript](https://github.com/jeffhollan/grpc-sample-node) | [Python](https://github.com/jeffhollan/grpc-sample-python) |
 | ---  | --- | --- | --- | --- |
 
