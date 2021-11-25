@@ -1,4 +1,4 @@
-# gRPC Sample : Node / JavaScript
+# gRPC Sample : Java
 
 The following is a sample of a gRPC client calling another container running gRPC server to execute a `SayHello` call.  The solution runs on Azure Container Apps.
 

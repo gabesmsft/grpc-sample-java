@@ -17,10 +17,17 @@ public class GrpcClient {
   private final GreeterGrpc.GreeterBlockingStub blockingStub;
 
   public GrpcClient() {
-    String target = "localhost:50051";
-    ManagedChannel channel = ManagedChannelBuilder.forTarget(target)
-        .usePlaintext()
-        .build();
+    String target = System.getenv().getOrDefault("GRPC_SERVER_ADDRESS", "localhost:50051");
+    ManagedChannelBuilder builder = ManagedChannelBuilder.forTarget(target);
+
+    if(target.endsWith(":443")) {
+      builder.useTransportSecurity();
+    }
+    else {
+      builder.usePlaintext();
+    }
+
+    ManagedChannel channel = builder.build();
     blockingStub = GreeterGrpc.newBlockingStub(channel);
   }
 
